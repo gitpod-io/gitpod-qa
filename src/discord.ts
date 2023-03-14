@@ -23,7 +23,9 @@ const ask = command({
         const question = interaction.options.getString('question', true);
         const content = await search(question);
 
-        interaction.followUp({ content });
+        interaction.followUp({
+            content: `> ${question}\n${content}`,
+        });
     },
 });
 
