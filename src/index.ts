@@ -7,7 +7,7 @@ import { OpenAI } from 'langchain/llms';
 import { existsSync } from 'fs';
 import { join } from 'desm';
 
-const SEARCH_PATH = join(import.meta.url, './search');
+const SEARCH_PATH = join(import.meta.url, '../search-cache');
 
 async function getDocuments() {
     const documents: Document[] = [];
