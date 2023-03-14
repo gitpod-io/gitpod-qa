@@ -1,0 +1,6 @@
+langchain
+requests
+openai
+transformers
+faiss-cpu
+gradio
