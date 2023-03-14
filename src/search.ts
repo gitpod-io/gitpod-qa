@@ -1,5 +1,5 @@
 import { OpenAIEmbeddings } from 'langchain/embeddings';
-import { loadQAStuffChain } from 'langchain/chains';
+import { loadQAMapReduceChain } from 'langchain/chains';
 import { HNSWLib } from 'langchain/vectorstores';
 import { Document } from 'langchain/document';
 import { getDocuments } from './documents';
@@ -33,7 +33,7 @@ async function getSearchIndex() {
 }
 
 export async function createSearch() {
-    const chain = loadQAStuffChain(new OpenAI({ temperature: 0 }));
+    const chain = loadQAMapReduceChain(new OpenAI({ temperature: 0 }));
     const search = await getSearchIndex();
 
     return async (question: string) => {
