@@ -13,17 +13,6 @@ const SEARCH_PATH = join(
     `../search-index/${config.searchIndex}`,
 );
 
-async function generateSearchIndex(documents: Document[]) {
-    const search = await HNSWLib.fromDocuments(
-        documents,
-        new OpenAIEmbeddings(),
-    );
-
-    await search.save(SEARCH_PATH);
-
-    return search;
-}
-
 async function getSearchIndex() {
     let search: HNSWLib;
 
@@ -34,7 +23,10 @@ async function getSearchIndex() {
         console.log('Building new search index');
 
         const documents = await getDocuments();
-        search = await generateSearchIndex(documents);
+
+        search = await HNSWLib.fromDocuments(documents, new OpenAIEmbeddings());
+
+        await search.save(SEARCH_PATH);
     }
 
     return search;
@@ -45,7 +37,7 @@ export async function createSearch() {
     const search = await getSearchIndex();
 
     return async (question: string) => {
-        const documents = await search.similaritySearch(config.question, 5);
+        const documents = await search.similaritySearch(question, 4);
 
         const result = await chain.call({
             input_documents: documents,
