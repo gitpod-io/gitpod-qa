@@ -11,6 +11,7 @@ import { join } from 'desm';
 
 const TEMP_PATH = join(import.meta.url, '../temp');
 
+// TODO code blocks cause text to split when it shouldn't
 export async function splitDocuments(documents: Document[]) {
     const splitter = new RecursiveCharacterTextSplitter();
     const splitDocuments: Document[] = [];
