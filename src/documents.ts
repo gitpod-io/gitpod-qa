@@ -107,10 +107,9 @@ export async function getGitpodDocuments() {
 
     console.log('Finding MD files');
     await totalist(repoPath, (relative, path) => {
-        if (!path.endsWith('.md') || !relative.startsWith('src/routes/docs'))
-            return;
+        if (!path.endsWith('.md') || !relative.startsWith('src/routes')) return;
 
-        const name = relative.replace('src/routes/docs', '').slice(0, -3);
+        const name = relative.replace('src/routes', '').slice(0, -3);
 
         paths.push({ path, name });
     });
@@ -121,7 +120,7 @@ export async function getGitpodDocuments() {
     console.log('Generating documents');
     for (const { path, name } of paths) {
         const rawContents = await readFile(path, 'utf-8');
-        const url = `https://gitpod.io/docs${name}`;
+        const url = `https://gitpod.io${name}`;
 
         // Remove the frontmatter then parse the markdown to text
         const contents = marked(rawContents.replace(/^---[\s\S]+?---/, ''), {
