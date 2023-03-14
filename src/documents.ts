@@ -1,4 +1,4 @@
-import { CharacterTextSplitter } from 'langchain/text_splitter';
+import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
 import { Document } from 'langchain/document';
 import MarkedText from 'marked-renderer-text';
 import { simpleGit } from 'simple-git';
@@ -12,13 +12,8 @@ import { join } from 'desm';
 const TEMP_PATH = join(import.meta.url, '../temp');
 
 export async function splitDocuments(documents: Document[]) {
+    const splitter = new RecursiveCharacterTextSplitter();
     const splitDocuments: Document[] = [];
-
-    const splitter = new CharacterTextSplitter({
-        chunkOverlap: 0,
-        separator: ' ',
-        chunkSize: 1024,
-    });
 
     for (const document of documents) {
         const chunks = await splitter.splitText(document.pageContent);

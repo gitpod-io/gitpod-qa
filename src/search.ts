@@ -1,7 +1,6 @@
 import { OpenAIEmbeddings } from 'langchain/embeddings';
 import { loadQAMapReduceChain } from 'langchain/chains';
 import { HNSWLib } from 'langchain/vectorstores';
-import { Document } from 'langchain/document';
 import { getDocuments } from './documents';
 import { OpenAI } from 'langchain/llms';
 import { config } from './config';
