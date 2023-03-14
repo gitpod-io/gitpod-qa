@@ -32,7 +32,7 @@ async function getSearchIndex() {
 }
 
 export async function createSearch() {
-    const chain = loadQAMapReduceChain(new OpenAI({ temperature: 0 }));
+    const chain = loadQAMapReduceChain(new OpenAI({ temperature: 0.2 }));
     const search = await getSearchIndex();
 
     return async (question: string) => {
