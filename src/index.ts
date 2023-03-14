@@ -9,6 +9,7 @@ import { existsSync } from 'fs';
 import { join } from 'desm';
 
 const SEARCH_PATH = join(import.meta.url, `../search-index/${config.searchIndex}`);
+const TEMP_PATH = join(import.meta.url, '../temp');
 
 async function getDocuments() {
     const documents: Document[] = [];
