@@ -1,6 +1,15 @@
 import { CharacterTextSplitter } from 'langchain/text_splitter';
 import { Document } from 'langchain/document';
+import MarkedText from 'marked-renderer-text';
+import { simpleGit } from 'simple-git';
+import { readFile } from 'fs/promises';
+import { totalist } from 'totalist';
 import { config } from './config';
+import { marked } from 'marked';
+import { existsSync } from 'fs';
+import { join } from 'desm';
+
+const TEMP_PATH = join(import.meta.url, '../temp');
 
 export async function splitDocuments(documents: Document[]) {
     const splitDocuments: Document[] = [];
@@ -34,6 +43,10 @@ export async function getDocuments() {
         case 'wikipedia':
             documents = await getWikipediaDocuments();
             break;
+
+        case 'gitpod':
+            documents = await getGitpodDocuments();
+            break;
     }
 
     return splitDocuments(documents);
@@ -62,6 +75,62 @@ async function getWikipediaDocuments() {
             metadata: {
                 source: `https://en.wikipedia.org/wiki/${title}`,
             },
+        });
+
+        documents.push(document);
+    }
+
+    return documents;
+}
+
+export async function getGitpodDocuments() {
+    const repoPath = `${TEMP_PATH}/gitpod`;
+
+    if (!existsSync(repoPath)) {
+        console.log('Cloning Gitpod Repo');
+
+        await simpleGit().clone(
+            'https://github.com/gitpod-io/website',
+            repoPath,
+            {
+                '--depth': 1,
+            },
+        );
+    }
+
+    interface Path {
+        path: string;
+        name: string;
+    }
+
+    const paths: Path[] = [];
+
+    console.log('Finding MD files');
+    await totalist(repoPath, (relative, path) => {
+        if (!path.endsWith('.md') || !relative.startsWith('src/routes/docs'))
+            return;
+
+        const name = relative.replace('src/routes/docs', '').slice(0, -3);
+
+        paths.push({ path, name });
+    });
+
+    const renderer = new MarkedText();
+    const documents: Document[] = [];
+
+    console.log('Generating documents');
+    for (const { path, name } of paths) {
+        const rawContents = await readFile(path, 'utf-8');
+        const url = `https://gitpod.io/docs${name}`;
+
+        // Remove the frontmatter then parse the markdown to text
+        const contents = marked(rawContents.replace(/^---[\s\S]+?---/, ''), {
+            renderer,
+        });
+
+        const document = new Document({
+            metadata: { source: url },
+            pageContent: contents,
         });
 
         documents.push(document);

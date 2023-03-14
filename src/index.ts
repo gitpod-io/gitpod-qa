@@ -49,6 +49,6 @@ const result = await chain.call({
     question: config.question,
 });
 
-const answer = result.text;
+const answer = result?.text?.trim();
 
 console.log({ answer });
