@@ -36,7 +36,7 @@ export async function createSearch() {
     const search = await getSearchIndex();
 
     return async (question: string) => {
-        const documents = await search.similaritySearch(question, 5);
+        const documents = await search.similaritySearch(question, 4);
 
         const result = await chain.call({
             input_documents: documents,
