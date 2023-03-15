@@ -1,6 +1,9 @@
-import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
+import {
+    CharacterTextSplitter,
+    RecursiveCharacterTextSplitter,
+} from 'langchain/text_splitter';
 import { Document } from 'langchain/document';
-import MarkedText from 'marked-renderer-text';
+import { markdownToText } from './marked';
 import { simpleGit } from 'simple-git';
 import { readFile } from 'fs/promises';
 import { totalist } from 'totalist';
@@ -11,21 +14,39 @@ import { join } from 'desm';
 
 const TEMP_PATH = join(import.meta.url, '../temp');
 
-// TODO code blocks cause text to split when it shouldn't
+// TODO designed for splitting markdown but should be better
 export async function splitDocuments(documents: Document[]) {
-    const splitter = new RecursiveCharacterTextSplitter();
+    const splitter = new CharacterTextSplitter({
+        separator: '__SPLIT_HERE__',
+        chunkSize: 4000,
+    });
+
     const splitDocuments: Document[] = [];
 
     for (const document of documents) {
         const chunks = await splitter.splitText(document.pageContent);
 
         for (const chunk of chunks) {
-            const splitDocument = new Document({
-                metadata: document.metadata,
-                pageContent: chunk,
-            });
+            if (chunk.length > 4000) {
+                const secondarySplitter = new RecursiveCharacterTextSplitter();
+                const chunks = await secondarySplitter.splitText(chunk);
 
-            splitDocuments.push(splitDocument);
+                for (const chunk of chunks) {
+                    const splitDocument = new Document({
+                        metadata: document.metadata,
+                        pageContent: chunk,
+                    });
+
+                    splitDocuments.push(splitDocument);
+                }
+            } else {
+                const splitDocument = new Document({
+                    metadata: document.metadata,
+                    pageContent: chunk,
+                });
+
+                splitDocuments.push(splitDocument);
+            }
         }
     }
 
@@ -110,7 +131,6 @@ export async function getGitpodDocuments() {
         paths.push({ path, name });
     });
 
-    const renderer = new MarkedText();
     const documents: Document[] = [];
 
     console.log('Generating documents');
@@ -119,9 +139,11 @@ export async function getGitpodDocuments() {
         const url = `https://gitpod.io${name}`;
 
         // Remove the frontmatter then parse the markdown to text
-        const contents = marked(rawContents.replace(/^---[\s\S]+?---/, ''), {
-            renderer,
-        });
+        // const contents = marked(rawContents.replace(/^---[\s\S]+?---/, ''), {
+        //     renderer,
+        // });
+
+        const contents = markdownToText(rawContents);
 
         const document = new Document({
             metadata: { source: url },
