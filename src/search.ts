@@ -32,7 +32,7 @@ async function getSearchIndex() {
 }
 
 export async function createSearch() {
-    const chain = loadQAStuffChain(new OpenAI({ temperature: 0.2 }));
+    const chain = loadQAStuffChain(new OpenAI({ temperature: 0 }));
     const search = await getSearchIndex();
 
     return async (question: string) => {
@@ -41,6 +41,8 @@ export async function createSearch() {
         const result = await chain.call({
             input_documents: documents,
             question,
+            finish_reason: 'stop',
+            max_tokens: 500,
         });
 
         const answer = result?.text?.trim();
