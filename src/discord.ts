@@ -21,6 +21,13 @@ const ask = command({
 
     async run({ interaction }) {
         const question = interaction.options.getString('question', true);
+
+        if (question.trim().length == 0) {
+            return await interaction.followUp({
+                content: 'Please give a question',
+            });
+        }
+
         const content = await search(question);
 
         interaction.followUp({
