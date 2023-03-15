@@ -9,7 +9,6 @@ specifiers:
   jellycommands: 1.0.0-next.38
   langchain: ^0.0.31
   marked: ^4.2.12
-  marked-renderer-text: ^2.0.2
   simple-git: ^3.17.0
   totalist: ^3.0.0
 
@@ -22,7 +21,6 @@ devDependencies:
   jellycommands: 1.0.0-next.38_discord.js@14.8.0
   langchain: 0.0.31_hnswlib-node@1.4.2
   marked: 4.2.12
-  marked-renderer-text: 2.0.2_marked@4.2.12
   simple-git: 3.17.0
   totalist: 3.0.0
 
@@ -998,14 +996,6 @@ packages:
       - supports-color
     dev: true
     optional: true
-
-  /marked-renderer-text/2.0.2_marked@4.2.12:
-    resolution: {integrity: sha512-E4YHpLyAOB7OBbGKVS0L+jY7t9XV7NE3JyTMtTL8f/Ft2Rhgqcwghv2ySR76F+pLNDzjl2KTM6Qt8r6MTaE6FQ==}
-    peerDependencies:
-      marked: ^4.0.7
-    dependencies:
-      marked: 4.2.12
-    dev: true
 
   /marked/4.2.12:
     resolution: {integrity: sha512-yr8hSKa3Fv4D3jdZmtMMPghgVt6TWbk86WQaWhDloQjRSQhMMYCAro7jP7VDJrjjdV8pxVxMssXS8B8Y5DZ5aw==}
