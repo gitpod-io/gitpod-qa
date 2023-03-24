@@ -1,5 +1,5 @@
 {
-	"type": "commonjs",
+	"type": "module",
 	"devDependencies": {
 		"@types/marked": "^4.0.8",
 		"@types/node": "^18.15.2",
