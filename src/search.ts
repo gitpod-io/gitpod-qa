@@ -1,5 +1,5 @@
+import { loadQAStuffChain, VectorDBQAChain } from 'langchain/chains';
 import { OpenAIEmbeddings } from 'langchain/embeddings';
-import { loadQAStuffChain } from 'langchain/chains';
 import { HNSWLib } from 'langchain/vectorstores';
 import { getDocuments } from './documents';
 import { OpenAI } from 'langchain/llms';
@@ -32,21 +32,32 @@ async function getSearchIndex() {
 }
 
 export async function createSearch() {
-    const chain = loadQAStuffChain(new OpenAI({ temperature: 0 }));
     const search = await getSearchIndex();
 
-    return async (question: string) => {
-        const documents = await search.similaritySearch(question, 4);
+    const chain = VectorDBQAChain.fromLLM(
+        new OpenAI({ temperature: 0 }),
+        search,
+    );
 
+    chain.returnSourceDocuments = true;
+
+    return async (question: string) => {
         const result = await chain.call({
-            input_documents: documents,
-            question,
             finish_reason: 'stop',
             max_tokens: 500,
+            query: question,
         });
+
+        const sources = result?.sourceDocuments?.map(
+            (s) => s?.metadata?.source,
+        );
 
         const answer = result?.text?.trim();
 
-        return typeof answer == 'string' ? answer : 'Error getting response';
+        return {
+            sources: (sources ?? []).filter(Boolean) as string[],
+            answer:
+                typeof answer == 'string' ? answer : 'Error getting response',
+        };
     };
 }

@@ -28,10 +28,14 @@ const ask = command({
             });
         }
 
-        const content = await search(question);
+        const { answer, sources } = await search(question);
+
+        const response = `> ${question}\n${answer}\n\nSources:\n${sources.join(
+            '\n',
+        )}`;
 
         interaction.followUp({
-            content: `> ${question}\n${content}`,
+            content: response,
         });
     },
 });
