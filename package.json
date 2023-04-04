@@ -13,6 +13,7 @@
 		"langchain": "^0.0.47",
 		"marked": "^4.3.0",
 		"simple-git": "^3.17.0",
-		"totalist": "^3.0.1"
+		"totalist": "^3.0.1",
+		"tsm": "^2.3.0"
 	}
 }
