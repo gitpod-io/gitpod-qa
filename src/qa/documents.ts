@@ -10,7 +10,7 @@ import { totalist } from 'totalist';
 import { existsSync } from 'fs';
 import { join } from 'desm';
 
-const TEMP_PATH = join(import.meta.url, '../temp');
+const TEMP_PATH = join(import.meta.url, '../../temp');
 
 // TODO designed for splitting markdown but should be better
 export async function splitDocuments(documents: Document[]) {

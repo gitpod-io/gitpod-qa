@@ -1,12 +1,12 @@
-import { loadQAStuffChain, VectorDBQAChain } from 'langchain/chains';
 import { OpenAIEmbeddings } from 'langchain/embeddings';
+import { VectorDBQAChain } from 'langchain/chains';
 import { HNSWLib } from 'langchain/vectorstores';
 import { getDocuments } from './documents';
 import { OpenAI } from 'langchain/llms';
 import { existsSync } from 'fs';
 import { join } from 'desm';
 
-const SEARCH_PATH = join(import.meta.url, `../search-index`);
+const SEARCH_PATH = join(import.meta.url, `../../search-index`);
 
 async function getSearchIndex() {
     let search: HNSWLib;
