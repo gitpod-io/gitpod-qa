@@ -1,0 +1,1 @@
+export { createSearch } from './search';

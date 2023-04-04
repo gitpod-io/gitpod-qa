@@ -3,10 +3,8 @@ import { VectorDBQAChain } from 'langchain/chains';
 import { HNSWLib } from 'langchain/vectorstores';
 import { getDocuments } from './documents';
 import { OpenAI } from 'langchain/llms';
+import { SEARCH_PATH } from './paths';
 import { existsSync } from 'fs';
-import { join } from 'desm';
-
-const SEARCH_PATH = join(import.meta.url, `../../../../search-index`);
 
 async function getSearchIndex() {
     let search: HNSWLib;

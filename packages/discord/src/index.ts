@@ -1,6 +1,6 @@
+import { createSearch } from '@gitpod/docs-qa';
 import { JellyCommands } from 'jellycommands';
 import { IntentsBitField } from 'discord.js';
-import { createSearch } from './qa/search';
 
 const search = await createSearch();
 
