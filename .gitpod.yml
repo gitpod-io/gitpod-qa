@@ -1,0 +1,2 @@
+tasks:
+  - command: npm install pnpm -g && pnpm install

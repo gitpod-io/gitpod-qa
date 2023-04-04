@@ -6,7 +6,7 @@ import { OpenAI } from 'langchain/llms';
 import { existsSync } from 'fs';
 import { join } from 'desm';
 
-const SEARCH_PATH = join(import.meta.url, `../../search-index`);
+const SEARCH_PATH = join(import.meta.url, `../../../../search-index`);
 
 async function getSearchIndex() {
     let search: HNSWLib;
