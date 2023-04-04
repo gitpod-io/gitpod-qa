@@ -3,14 +3,10 @@ import { OpenAIEmbeddings } from 'langchain/embeddings';
 import { HNSWLib } from 'langchain/vectorstores';
 import { getDocuments } from './documents';
 import { OpenAI } from 'langchain/llms';
-import { config } from './config';
 import { existsSync } from 'fs';
 import { join } from 'desm';
 
-const SEARCH_PATH = join(
-    import.meta.url,
-    `../search-index/${config.searchIndex}`,
-);
+const SEARCH_PATH = join(import.meta.url, `../search-index`);
 
 async function getSearchIndex() {
     let search: HNSWLib;

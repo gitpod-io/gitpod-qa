@@ -7,8 +7,6 @@ import { markdownToText } from './marked';
 import { simpleGit } from 'simple-git';
 import { readFile } from 'fs/promises';
 import { totalist } from 'totalist';
-import { config } from './config';
-import { marked } from 'marked';
 import { existsSync } from 'fs';
 import { join } from 'desm';
 
@@ -54,53 +52,6 @@ export async function splitDocuments(documents: Document[]) {
 }
 
 export async function getDocuments() {
-    let documents: Document[] = [];
-
-    switch (config.searchIndex) {
-        case 'wikipedia':
-            documents = await getWikipediaDocuments();
-            break;
-
-        case 'gitpod':
-            documents = await getGitpodDocuments();
-            break;
-    }
-
-    return splitDocuments(documents);
-}
-
-async function getWikipediaDocuments() {
-    const documents: Document[] = [];
-
-    const titles: string[] = [
-        'Unix',
-        'Microsoft_Windows',
-        'Linux',
-        'London',
-        'Python_(programming_language)',
-    ];
-
-    for (const title of titles) {
-        const url = `https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&explaintext=1&titles=${title}`;
-        const response = await fetch(url);
-        const data = await response.json();
-
-        const [page] = Object.values(data.query.pages) as Record<string, any>[];
-
-        const document = new Document({
-            pageContent: page.extract,
-            metadata: {
-                source: `https://en.wikipedia.org/wiki/${title}`,
-            },
-        });
-
-        documents.push(document);
-    }
-
-    return documents;
-}
-
-export async function getGitpodDocuments() {
     const repoPath = `${TEMP_PATH}/gitpod`;
 
     if (!existsSync(repoPath)) {
@@ -138,11 +89,6 @@ export async function getGitpodDocuments() {
         const rawContents = await readFile(path, 'utf-8');
         const url = `https://gitpod.io${name}`;
 
-        // Remove the frontmatter then parse the markdown to text
-        // const contents = marked(rawContents.replace(/^---[\s\S]+?---/, ''), {
-        //     renderer,
-        // });
-
         const contents = markdownToText(rawContents);
 
         const document = new Document({
@@ -153,5 +99,5 @@ export async function getGitpodDocuments() {
         documents.push(document);
     }
 
-    return documents;
+    return splitDocuments(documents);
 }

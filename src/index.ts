@@ -2,7 +2,7 @@ import { IntentsBitField, ModalBuilder, ActionRowBuilder } from 'discord.js';
 import type { ModalActionRowComponentBuilder } from 'discord.js';
 import { TextInputBuilder, TextInputStyle } from 'discord.js';
 import { JellyCommands, command } from 'jellycommands';
-import { createSearch } from './search';
+import { createSearch } from './qa/search';
 
 const search = await createSearch();
 
