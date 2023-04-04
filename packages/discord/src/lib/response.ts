@@ -27,3 +27,10 @@ export function create_response(data: ResponseData) {
         ${data.sources.join('\n')}
     `;
 }
+
+export function create_error_response(question: string) {
+    return stripIndents`
+        ${format_question(question)}
+        I don't have enough information to answer that right now :(
+    `;
+}

@@ -1,4 +1,4 @@
-import { create_response } from '../lib/response';
+import { create_error_response, create_response } from '../lib/response';
 import { event } from 'jellycommands';
 
 export default event({
@@ -34,6 +34,16 @@ export default event({
                 await interaction.followUp({
                     content: 'There was an error generating an answer',
                 });
+                return;
+            }
+
+            // The prompt template instructs it to return "I don't know" if it doesn't know, so we should exit
+            if (answer == "I don't know.") {
+                await interaction.followUp({
+                    content: create_error_response(question),
+                });
+
+                return;
             }
 
             interaction.followUp({
