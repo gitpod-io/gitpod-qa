@@ -1,5 +1,31 @@
 import { event } from 'jellycommands';
 
+const format_question = (question: string) => {
+    const formatted = question
+        .trim()
+        .split('\n')
+        .map((line) => `> ${line}`)
+        .join('\n')
+        .slice(0, 1000)
+        .trim();
+
+    return formatted.length == 1000 ? `${formatted}...` : formatted;
+};
+
+interface ResponseData {
+    question: string;
+    answer: string;
+    sources: string[];
+}
+
+const create_response = (data: ResponseData) => `
+${format_question(data.question)}
+${data.answer}
+
+Sources:
+${data.sources.join('\n')}
+`;
+
 export default event({
     name: 'interactionCreate',
 
@@ -20,20 +46,27 @@ export default event({
                 return;
             }
 
-            const { answer, sources } = await props.search(question);
+            const result = await props.search(question);
 
-            const formatted_question = question
-                .trim()
-                .split('\n')
-                .map((line) => `> ${line}`)
-                .join('\n');
+            const sources: string[] = Array.isArray(result?.sources)
+                ? result.sources
+                : [];
 
-            const formatted_sources = sources.join('\n');
+            const answer =
+                typeof result?.answer == 'string' ? result.answer : null;
 
-            const response = `${formatted_question}\n${answer}\n\nSources:\n${formatted_sources}`;
+            if (!answer || sources.length == 0) {
+                await interaction.followUp({
+                    content: 'There was an error generating an answer',
+                });
+            }
 
             interaction.followUp({
-                content: response,
+                content: create_response({
+                    question,
+                    sources,
+                    answer,
+                }),
             });
         }
     },
