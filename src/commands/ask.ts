@@ -23,7 +23,7 @@ export default command({
             .setLabel('What is your question?')
             .setStyle(TextInputStyle.Paragraph)
             .setRequired(true)
-            .setMinLength(30)
+            .setMinLength(10)
             .setMaxLength(2000);
 
         const row =
