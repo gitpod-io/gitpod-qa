@@ -1,5 +1,7 @@
+import { IntentsBitField, ModalBuilder, ActionRowBuilder } from 'discord.js';
+import type { ModalActionRowComponentBuilder } from 'discord.js';
+import { TextInputBuilder, TextInputStyle } from 'discord.js';
 import { JellyCommands, command } from 'jellycommands';
-import { IntentsBitField } from 'discord.js';
 import { createSearch } from './search';
 
 const search = await createSearch();
@@ -8,35 +10,29 @@ const ask = command({
     name: 'ask',
     description: 'Ask a question',
 
-    options: [
-        {
-            name: 'question',
-            description: 'The question to ask',
-            type: 'String',
-        },
-    ],
-
     global: true,
-    defer: true,
 
     async run({ interaction }) {
-        const question = interaction.options.getString('question', true);
+        const modal = new ModalBuilder()
+            .setCustomId('ask-modal')
+            .setTitle('Fancy question answering thing');
 
-        if (question.trim().length == 0) {
-            return await interaction.followUp({
-                content: 'Please give a question',
-            });
-        }
+        const question_input = new TextInputBuilder()
+            .setCustomId('question')
+            .setLabel('What is your question?')
+            .setStyle(TextInputStyle.Paragraph)
+            .setRequired(true)
+            .setMinLength(30)
+            .setMaxLength(2000);
 
-        const { answer, sources } = await search(question);
+        const row =
+            new ActionRowBuilder<ModalActionRowComponentBuilder>().addComponents(
+                question_input,
+            );
 
-        const response = `> ${question}\n${answer}\n\nSources:\n${sources.join(
-            '\n',
-        )}`;
+        modal.addComponents(row);
 
-        interaction.followUp({
-            content: response,
-        });
+        interaction.showModal(modal);
     },
 });
 
@@ -55,6 +51,40 @@ const client = new JellyCommands({
         global: true,
         guilds: ['663140687591768074'],
     },
+});
+
+client.on('interactionCreate', async (interaction) => {
+    if (interaction.isModalSubmit() && interaction.customId == 'ask-modal') {
+        await interaction.deferReply();
+
+        const question = interaction.fields.getTextInputValue('question');
+
+        if (question.trim().length == 0) {
+            await interaction.followUp({
+                content: 'Please give a question',
+            });
+
+            return;
+        }
+
+        const { answer, sources } = await search(question);
+
+        const formatted_question = question
+            .trim()
+            .split('\n')
+            .map((line) => `> ${line}`)
+            .join('\n');
+
+        const formatted_sources = sources.join('\n');
+
+        const response = `${formatted_question}\n${answer}\n\nSources:\n${formatted_sources}`;
+
+        console.log(response);
+
+        interaction.followUp({
+            content: response,
+        });
+    }
 });
 
 client.on('ready', () => {
