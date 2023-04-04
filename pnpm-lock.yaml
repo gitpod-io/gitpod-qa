@@ -9,9 +9,15 @@ importers:
       '@gitpod/docs-qa':
         specifier: workspace:^
         version: link:../qa
+      '@types/common-tags':
+        specifier: ^1.8.1
+        version: 1.8.1
       '@types/node':
         specifier: ^18.15.11
         version: 18.15.11
+      common-tags:
+        specifier: ^1.8.2
+        version: 1.8.2
       discord.js:
         specifier: ^14.9.0
         version: 14.9.0
@@ -194,6 +200,10 @@ packages:
     resolution: {integrity: sha512-OvjF+z51L3ov0OyAU0duzsYuvO01PH7x4t6DJx+guahgTnBHkhJdG7soQeTSFLWN3efnHyibZ4Z8l2EuWwJN3A==}
     dev: true
 
+  /@types/common-tags@1.8.1:
+    resolution: {integrity: sha512-20R/mDpKSPWdJs5TOpz3e7zqbeCNuMCPhV7Yndk9KU2Rbij2r5W4RzwDPkzC+2lzUqXYu9rFzTktCBnDjHuNQg==}
+    dev: true
+
   /@types/marked@4.0.8:
     resolution: {integrity: sha512-HVNzMT5QlWCOdeuBsgXP8EZzKUf0+AXzN+sLmjvaB3ZlLqO+e4u0uXrdw9ub69wBKFs+c6/pA4r9sy6cCDvImw==}
     dev: true
@@ -257,6 +267,11 @@ packages:
     engines: {node: '>= 0.8'}
     dependencies:
       delayed-stream: 1.0.0
+    dev: true
+
+  /common-tags@1.8.2:
+    resolution: {integrity: sha512-gk/Z852D2Wtb//0I+kRFNKKE9dIIVirjoqPoA1wJU+XePVXZfGeBpk45+A1rKO4Q43prqWBNY/MiIeRLbPWUaA==}
+    engines: {node: '>=4.0.0'}
     dev: true
 
   /cross-fetch@3.1.5:

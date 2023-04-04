@@ -1,30 +1,5 @@
+import { create_response } from '../lib/response';
 import { event } from 'jellycommands';
-
-const format_question = (question: string) => {
-    const formatted = question
-        .trim()
-        .split('\n')
-        .map((line) => `> ${line}`)
-        .join('\n')
-        .slice(0, 1000)
-        .trim();
-
-    return formatted.length == 1000 ? `${formatted}...` : formatted;
-};
-
-interface ResponseData {
-    question: string;
-    answer: string;
-    sources: string[];
-}
-
-const create_response = (data: ResponseData) => `
-${format_question(data.question)}
-${data.answer}
-
-Sources:
-${data.sources.join('\n')}
-`;
 
 export default event({
     name: 'interactionCreate',
