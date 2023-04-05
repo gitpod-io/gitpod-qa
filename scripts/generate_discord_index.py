@@ -4,13 +4,13 @@ import urllib.parse
 from os import environ
 
 
-def get_documents(base_url: str, limit: int, token: str):
+def get_documents(base_url: str, limit: int, api_key: str):
     url = f"{base_url}/indexes/threads/documents"
     params = {
         "limit": limit,
     }
     headers = {
-        "Authorization": f"Bearer {token}",
+        "Authorization": f"Bearer {api_key}",
     }
 
     parsed_url = urllib.parse.urlparse(url)
@@ -56,9 +56,9 @@ def print_new_data(data: dict) -> None:
 
 # Fetch threads
 discord_index_base_url = environ.get('DISCORD_INDEX_BASE_URL')
-discord_index_token = environ.get('DISCORD_INDEX_TOKEN')
+discord_index_api_key = environ.get('DISCORD_INDEX_API_KEY')
 thread_documents = get_documents(
-    str(discord_index_base_url), 3000, str(discord_index_token))
+    str(discord_index_base_url), 3000, str(discord_index_api_key))
 
 # Output the data in the correct format
 print_new_data(thread_documents)
