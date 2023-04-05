@@ -1,2 +1,12 @@
 tasks:
   - command: npm install pnpm -g && pnpm install
+
+github:
+  prebuilds:
+    master: false
+    branches: false
+    pullRequests: false
+    pullRequestsFromForks: false
+    addCheck: false
+    addComment: false
+    addBadge: false
