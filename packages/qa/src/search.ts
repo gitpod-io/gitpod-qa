@@ -25,7 +25,14 @@ async function getSearchIndex() {
     return search;
 }
 
-export async function createSearch() {
+export interface QASearchResult {
+    sources: string[];
+    answer: string;
+}
+
+export type QASearcher = (question: string) => Promise<QASearchResult>;
+
+export async function createSearch(): Promise<QASearcher> {
     const search = await getSearchIndex();
 
     const chain = VectorDBQAChain.fromLLM(
@@ -35,7 +42,7 @@ export async function createSearch() {
 
     chain.returnSourceDocuments = true;
 
-    return async (question: string) => {
+    return async (question) => {
         const result = await chain.call({
             finish_reason: 'stop',
             max_tokens: 500,
@@ -49,7 +56,7 @@ export async function createSearch() {
         const answer = result?.text?.trim();
 
         return {
-            sources: (sources ?? []).filter(Boolean) as string[],
+            sources: (sources ?? []).filter(Boolean),
             answer:
                 typeof answer == 'string' ? answer : 'Error getting response',
         };

@@ -5,7 +5,7 @@ import { IntentsBitField } from 'discord.js';
 const search = await createSearch();
 
 const client = new JellyCommands({
-    commands: 'src/commands',
+    buttons: 'src/buttons',
     events: 'src/events',
 
     clientOptions: {
