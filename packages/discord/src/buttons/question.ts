@@ -2,6 +2,10 @@ import { generate_answer } from '../lib/qa';
 import { ChannelType } from 'discord.js';
 import { button } from 'jellycommands';
 
+function limit_chars(str: string) {
+    return str.length > 2000 ? `${str.slice(0, 2000)}...` : str;
+}
+
 export default button({
     id: 'question-qa',
 
@@ -28,7 +32,11 @@ export default button({
             });
 
         const question = `${channel.name.trim()}\n${startMessage.content.trimStart()}`;
-        const answer = await generate_answer(question, props.search);
+
+        const answer = await generate_answer(
+            limit_chars(question),
+            props.search,
+        );
 
         return interaction.followUp({
             content: answer,
