@@ -25,6 +25,8 @@ export function create_response(data: ResponseData) {
 
         Sources:
         ${data.sources.join('\n')}
+
+        Please note while I am in beta my answer my not be 100% accurate
     `;
 }
 
