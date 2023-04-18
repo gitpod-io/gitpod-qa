@@ -85,7 +85,7 @@ export async function getDocuments() {
     console.log('Generating documents');
     for (const { path, name } of paths) {
         const rawContents = await readFile(path, 'utf-8');
-        const url = `https://gitpod.io${name}`;
+        const url = `https://gitpod.io${name.replace(/\/index$/gm, '/')}`;
 
         const contents = markdownToText(rawContents);
 
