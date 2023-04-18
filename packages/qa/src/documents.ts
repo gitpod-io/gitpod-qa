@@ -82,10 +82,18 @@ export async function getDocuments() {
 
     const documents: Document[] = [];
 
+    function create_url(path: string) {
+        const formatted_path = path
+            .replace(/\/index$/gm, '/')
+            .replace(/\/$/gm, '');
+
+        return `https://gitpod.io${formatted_path}`;
+    }
+
     console.log('Generating documents');
     for (const { path, name } of paths) {
         const rawContents = await readFile(path, 'utf-8');
-        const url = `https://gitpod.io${name.replace(/\/index$/gm, '/')}`;
+        const url = create_url(name);
 
         const contents = markdownToText(rawContents);
 
