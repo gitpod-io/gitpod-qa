@@ -5,7 +5,8 @@ export async function generate_answer(question: string, search: QASearcher) {
     const result = await search(question);
 
     const sources: string[] = Array.isArray(result?.sources)
-        ? result.sources
+        ? // TODO remove the map next time the search index is rebuilt
+          result.sources.map((source) => source.replace(/\/index$/gm, '/'))
         : [];
 
     const answer = typeof result?.answer == 'string' ? result.answer : null;
