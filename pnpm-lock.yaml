@@ -7,8 +7,8 @@ importers:
   packages/api:
     dependencies:
       '@nerujs/fastify':
-        specifier: ^1.0.0
-        version: 1.0.0(fastify@4.16.3)(neru@1.0.0)
+        specifier: ^1.0.1
+        version: 1.0.1(fastify@4.16.3)(neru@1.0.1)
       desm:
         specifier: ^1.3.0
         version: 1.3.0
@@ -16,8 +16,8 @@ importers:
         specifier: ^4.16.3
         version: 4.16.3
       neru:
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^1.0.1
+        version: 1.0.1
       pino-pretty:
         specifier: ^10.0.0
         version: 10.0.0
@@ -26,8 +26,8 @@ importers:
         specifier: workspace:^
         version: link:../qa
       '@types/node':
-        specifier: ^18.15.11
-        version: 18.15.11
+        specifier: ^18.16.1
+        version: 18.16.1
       dotenv:
         specifier: ^16.0.3
         version: 16.0.3
@@ -38,8 +38,8 @@ importers:
         specifier: ^2.3.0
         version: 2.3.0
       typescript:
-        specifier: ^5.0.3
-        version: 5.0.3
+        specifier: ^5.0.4
+        version: 5.0.4
 
   packages/discord:
     devDependencies:
@@ -51,7 +51,7 @@ importers:
         version: 1.8.1
       '@types/node':
         specifier: ^18.15.11
-        version: 18.15.11
+        version: 18.16.1
       common-tags:
         specifier: ^1.8.2
         version: 1.8.2
@@ -69,7 +69,7 @@ importers:
         version: 2.3.0
       typescript:
         specifier: ^5.0.3
-        version: 5.0.3
+        version: 5.0.4
 
   packages/qa:
     devDependencies:
@@ -78,7 +78,7 @@ importers:
         version: 4.0.8
       '@types/node':
         specifier: ^18.15.11
-        version: 18.15.11
+        version: 18.16.1
       desm:
         specifier: ^1.3.0
         version: 1.3.0
@@ -93,7 +93,7 @@ importers:
         version: 4.3.0
       simple-git:
         specifier: ^3.17.0
-        version: 3.17.0
+        version: 3.18.0
       totalist:
         specifier: ^3.0.1
         version: 3.0.1
@@ -102,7 +102,7 @@ importers:
         version: 2.3.0
       typescript:
         specifier: ^5.0.3
-        version: 5.0.3
+        version: 5.0.4
 
 packages:
 
@@ -122,7 +122,7 @@ packages:
       '@discordjs/formatters': 0.3.0
       '@discordjs/util': 0.2.0
       '@sapphire/shapeshift': 3.8.2
-      discord-api-types: 0.37.37
+      discord-api-types: 0.37.40
       fast-deep-equal: 3.1.3
       ts-mixer: 6.0.3
       tslib: 2.5.0
@@ -137,7 +137,7 @@ packages:
     resolution: {integrity: sha512-Fc4MomalbP8HMKEMor3qUiboAKDtR7PSBoPjwm7WYghVRwgJlj5WYvUsriLsxeKk8+Qq2oy+HJlGTUkGvX0YnA==}
     engines: {node: '>=16.9.0'}
     dependencies:
-      discord-api-types: 0.37.37
+      discord-api-types: 0.37.40
     dev: true
 
   /@discordjs/rest@1.7.0:
@@ -147,11 +147,11 @@ packages:
       '@discordjs/collection': 1.5.0
       '@discordjs/util': 0.2.0
       '@sapphire/async-queue': 1.5.0
-      '@sapphire/snowflake': 3.4.0
-      discord-api-types: 0.37.37
-      file-type: 18.2.1
+      '@sapphire/snowflake': 3.4.2
+      discord-api-types: 0.37.40
+      file-type: 18.3.0
       tslib: 2.5.0
-      undici: 5.21.0
+      undici: 5.22.0
     dev: true
 
   /@discordjs/util@0.2.0:
@@ -226,14 +226,14 @@ packages:
     resolution: {integrity: sha512-GaHYm+c0O9MjZRu0ongGBRbinu8gVAMd2UZjji6jVmqKtZluZnptXGWhz1E8j8D2HJ3f/yMxKAUC0b+57wncIw==}
     dev: true
 
-  /@nerujs/fastify@1.0.0(fastify@4.16.3)(neru@1.0.0):
-    resolution: {integrity: sha512-1XvUmFXrxFyAz/WwzHNfdug4cv8xb8dDlA3wMjYHhoYTPv4NBUh9OnEPvl74iJNKqOhJkkxhi78DOKF2TonPHQ==}
+  /@nerujs/fastify@1.0.1(fastify@4.16.3)(neru@1.0.1):
+    resolution: {integrity: sha512-ZyJOl9fxWPMp/Y/wiHTS3gQvH2Yxw7u8NyHOn/oASjzQLsNf9BI1Ec/5xBIe7iHW0UTt/Diq1jqwPeHoeuXIOQ==}
     peerDependencies:
       fastify: ^4.3.0
-      neru: 1.0.0
+      neru: 1.0.1
     dependencies:
       fastify: 4.16.3
-      neru: 1.0.0
+      neru: 1.0.1
     dev: false
 
   /@nerujs/methods@1.0.2:
@@ -253,8 +253,8 @@ packages:
       lodash: 4.17.21
     dev: true
 
-  /@sapphire/snowflake@3.4.0:
-    resolution: {integrity: sha512-zZxymtVO6zeXVMPds+6d7gv/OfnCc25M1Z+7ZLB0oPmeMTPeRWVPQSS16oDJy5ZsyCOLj7M6mbZml5gWXcVRNw==}
+  /@sapphire/snowflake@3.4.2:
+    resolution: {integrity: sha512-KJwlv5gkGjs1uFV7/xx81n3tqgBwBJvH94n1xDyH3q+JSmtsMeSleJffarEBfG2yAFeJiFA4BnGOK6FFPHc19g==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
     dev: true
 
@@ -284,14 +284,14 @@ packages:
     resolution: {integrity: sha512-HVNzMT5QlWCOdeuBsgXP8EZzKUf0+AXzN+sLmjvaB3ZlLqO+e4u0uXrdw9ub69wBKFs+c6/pA4r9sy6cCDvImw==}
     dev: true
 
-  /@types/node@18.15.11:
-    resolution: {integrity: sha512-E5Kwq2n4SbMzQOn6wnmBjuK9ouqlURrcZDVfbo9ftDDTFt3nk7ZKK4GMOzoYgnpQJKcxwQw+lGaBvvlMo0qN/Q==}
+  /@types/node@18.16.1:
+    resolution: {integrity: sha512-DZxSZWXxFfOlx7k7Rv4LAyiMroaxa3Ly/7OOzZO8cBNho0YzAi4qlbrx8W27JGqG57IgR/6J7r+nOJWw6kcvZA==}
     dev: true
 
   /@types/ws@8.5.4:
     resolution: {integrity: sha512-zdQDHKUgcX/zBc4GrwsE/7dVdAD8JR4EuiAXiiUhhfyIJXXb2+PrGshFyeXWQPMmmZ2XxgaqclgpIC7eTXc1mg==}
     dependencies:
-      '@types/node': 18.15.11
+      '@types/node': 18.16.1
     dev: true
 
   /abbrev@1.1.1:
@@ -368,8 +368,8 @@ packages:
       - debug
     dev: true
 
-  /axios@1.3.4:
-    resolution: {integrity: sha512-toYm+Bsyl6VC5wSkfkbbNB6ROv7KY93PEBBL6xyDczaIHasAiv4wPqQ/c4RjoQzipxRD2W5g21cOqQulZ7rHwQ==}
+  /axios@1.3.6:
+    resolution: {integrity: sha512-PEcdkk7JcdPiMDkvM4K6ZBRYq9keuVJsToxm2zQIM70Qqo2WHTdJZMXcG9X+RmRp2VPNUQC8W1RAGbgt6b1yMg==}
     dependencies:
       follow-redirects: 1.15.2
       form-data: 4.0.0
@@ -498,7 +498,7 @@ packages:
       supports-color:
         optional: true
     dependencies:
-      ms: 2.1.2
+      ms: 2.1.3
       supports-color: 5.5.0
     dev: true
 
@@ -521,8 +521,8 @@ packages:
   /desm@1.3.0:
     resolution: {integrity: sha512-RvlHN2gfYA0BpCfjpWzCdQeR6p5U+84f5DzcirLow86UA/OcpwuOqXRC4Oz0bG9rzcJPVtMT6ZgNtjp4qh+uqA==}
 
-  /discord-api-types@0.37.37:
-    resolution: {integrity: sha512-LDMBKzl/zbvHO/yCzno5hevuA6lFIXJwdKSJZQrB+1ToDpFfN9thK+xxgZNR4aVkI7GHRDja0p4Sl2oYVPnHYg==}
+  /discord-api-types@0.37.40:
+    resolution: {integrity: sha512-LMALvtO+p6ERK8rwWoaI490NfIE/egbqjR4/rfLL1z9gQE1gqLiTpIUUDIunfAtKYzeH6ucyXhaXXWpfZh/Q6g==}
     dev: true
 
   /discord.js@14.9.0:
@@ -534,13 +534,13 @@ packages:
       '@discordjs/formatters': 0.3.0
       '@discordjs/rest': 1.7.0
       '@discordjs/util': 0.2.0
-      '@sapphire/snowflake': 3.4.0
+      '@sapphire/snowflake': 3.4.2
       '@types/ws': 8.5.4
-      discord-api-types: 0.37.37
+      discord-api-types: 0.37.40
       fast-deep-equal: 3.1.3
       lodash.snakecase: 4.1.1
       tslib: 2.5.0
-      undici: 5.21.0
+      undici: 5.22.0
       ws: 8.13.0
     transitivePeerDependencies:
       - bufferutil
@@ -864,8 +864,8 @@ packages:
       reusify: 1.0.4
     dev: false
 
-  /file-type@18.2.1:
-    resolution: {integrity: sha512-Yw5MtnMv7vgD2/6Bjmmuegc8bQEVA9GmAyaR18bMYWKqsWDG9wgYZ1j4I6gNMF5Y5JBDcUcjRQqNQx7Y8uotcg==}
+  /file-type@18.3.0:
+    resolution: {integrity: sha512-pkPZ5OGIq0TYb37b8bHDLNeQSe1H2KlaQ2ySGpJkkr2KZdaWsO4QhPzHA0mQcsUW2cSqJk+4gM/UyLz/UFbXdQ==}
     engines: {node: '>=14.16'}
     dependencies:
       readable-web-to-node-stream: 3.0.2
@@ -973,7 +973,7 @@ packages:
     requiresBuild: true
     dependencies:
       bindings: 1.5.0
-      node-addon-api: 6.0.0
+      node-addon-api: 6.1.0
     dev: true
 
   /ieee754@1.2.1:
@@ -1027,17 +1027,17 @@ packages:
     peerDependencies:
       discord.js: ^14.0.0
     dependencies:
-      axios: 1.3.4
-      discord-api-types: 0.37.37
+      axios: 1.3.6
+      discord-api-types: 0.37.40
       discord.js: 14.9.0
-      joi: 17.9.1
+      joi: 17.9.2
       totalist: 3.0.1
     transitivePeerDependencies:
       - debug
     dev: true
 
-  /joi@17.9.1:
-    resolution: {integrity: sha512-FariIi9j6QODKATGBrEX7HZcja8Bsh3rfdGYy/Sb65sGlZWK/QWesU1ghk7aJWDj95knjXlQfSmzFSPPkLVsfw==}
+  /joi@17.9.2:
+    resolution: {integrity: sha512-Itk/r+V4Dx0V3c7RLFdRh12IOjySm2/WGPMubBT92cQvRfYZhPM2W0hZlctjj72iES8jsRCwp7S/cRmWBnJ4nw==}
     dependencies:
       '@hapi/hoek': 9.3.0
       '@hapi/topo': 5.1.0
@@ -1129,7 +1129,7 @@ packages:
       openai: 3.2.1
       p-queue: 7.3.4
       uuid: 9.0.0
-      yaml: 2.2.1
+      yaml: 2.2.2
       zod: 3.21.4
     transitivePeerDependencies:
       - debug
@@ -1197,8 +1197,12 @@ packages:
   /ms@2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
 
-  /neru@1.0.0:
-    resolution: {integrity: sha512-hyTSLI1MTFpAgrUHa8sOfaL3kURwb3yPN6wTmZiue+tlyso7auZJiT1sGDDbnGh/tEKnj7aXVcPihpV+BIB6tA==}
+  /ms@2.1.3:
+    resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
+    dev: true
+
+  /neru@1.0.1:
+    resolution: {integrity: sha512-fiTCdJp4Q16MhI3KCnXx7x5EBB0uVEU6wcuAtkk3Q9P8Rnjtud6mvHrbAeewwDMIl2nbW612Nvl4dDaBi1HqCw==}
     dependencies:
       '@nerujs/methods': 1.0.2
       consolite: 0.3.11
@@ -1207,8 +1211,8 @@ packages:
       totalist: 3.0.1
     dev: false
 
-  /node-addon-api@6.0.0:
-    resolution: {integrity: sha512-GyHvgPvUXBvAkXa0YvYnhilSB1A+FRYMpIVggKzPZqdaZfevZOuzfWzyvgzOwRLHBeo/MMswmJFsrNF4Nw1pmA==}
+  /node-addon-api@6.1.0:
+    resolution: {integrity: sha512-+eawOlIgy680F0kBzPUNFhMZGtJ1YmqM6l4+Crf4IkImjYrO/mqPwRMh352g23uIaQKFItcQ64I7KMaJxHgAVA==}
     dev: true
 
   /node-fetch@2.6.7:
@@ -1484,8 +1488,8 @@ packages:
     resolution: {integrity: sha512-RVnVQxTXuerk653XfuliOxBP81Sf0+qfQE73LIYKcyMYHG94AuH0kgrQpRDuTZnSmjpysHmzxJXKNfa6PjFhyQ==}
     dev: false
 
-  /simple-git@3.17.0:
-    resolution: {integrity: sha512-JozI/s8jr3nvLd9yn2jzPVHnhVzt7t7QWfcIoDcqRIGN+f1IINGv52xoZti2kkYfoRhhRvzMSNPfogHMp97rlw==}
+  /simple-git@3.18.0:
+    resolution: {integrity: sha512-Yt0GJ5aYrpPci3JyrYcsPz8Xc05Hi4JPSOb+Sgn/BmPX35fn/6Fp9Mef8eMBCrL2siY5w4j49TA5Q+bxPpri1Q==}
     dependencies:
       '@kwsites/file-exists': 1.1.1
       '@kwsites/promise-deferred': 1.1.1
@@ -1599,8 +1603,8 @@ packages:
       esbuild: 0.15.18
     dev: true
 
-  /typescript@5.0.3:
-    resolution: {integrity: sha512-xv8mOEDnigb/tN9PSMTwSEqAnUvkoXMQlicOb0IUVDBSQCgBSaAAROUZYy2IcUy5qU6XajK5jjjO7TMWqBTKZA==}
+  /typescript@5.0.4:
+    resolution: {integrity: sha512-cW9T5W9xY37cc+jfEnaUvX91foxtHkza3Nw3wkoF4sSlKn0MONdkdEndig/qPBWXNkmplh3NzayQzCiHM4/hqw==}
     engines: {node: '>=12.20'}
     hasBin: true
     dev: true
@@ -1609,9 +1613,9 @@ packages:
     resolution: {integrity: sha512-WxONCrssBM8TSPRqN5EmsjVrsv4A8X12J4ArBiiayv3DyyG3ZlIg6yysuuSYdZsVz3TKcTg2fd//Ujd4CHV1iA==}
     dev: true
 
-  /undici@5.21.0:
-    resolution: {integrity: sha512-HOjK8l6a57b2ZGXOcUsI5NLfoTrfmbOl90ixJDl0AEFG4wgHNDQxtZy15/ZQp7HhjkpaGlp/eneMgtsu1dIlUA==}
-    engines: {node: '>=12.18'}
+  /undici@5.22.0:
+    resolution: {integrity: sha512-fR9RXCc+6Dxav4P9VV/sp5w3eFiSdOjJYsbtWfd4s5L5C4ogyuVpdKIVHeW0vV1MloM65/f7W45nR9ZxwVdyiA==}
+    engines: {node: '>=14.0'}
     dependencies:
       busboy: 1.6.0
     dev: true
@@ -1662,8 +1666,8 @@ packages:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
     dev: false
 
-  /yaml@2.2.1:
-    resolution: {integrity: sha512-e0WHiYql7+9wr4cWMx3TVQrNwejKaEe7/rHNmQmqRjazfOP5W8PB6Jpebb5o6fIapbz9o9+2ipcaTM2ZwDI6lw==}
+  /yaml@2.2.2:
+    resolution: {integrity: sha512-CBKFWExMn46Foo4cldiChEzn7S7SRV+wqiluAb6xmueD/fGyRHIhX8m14vVGgeFWjN540nKCNVj6P21eQjgTuA==}
     engines: {node: '>= 14'}
     dev: true
 
