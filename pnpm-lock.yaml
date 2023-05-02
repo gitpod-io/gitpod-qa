@@ -9,6 +9,9 @@ importers:
       '@nerujs/fastify':
         specifier: ^1.0.1
         version: 1.0.1(fastify@4.16.3)(neru@1.0.1)
+      '@sinclair/typebox':
+        specifier: ^0.28.9
+        version: 0.28.9
       desm:
         specifier: ^1.3.0
         version: 1.3.0
@@ -271,6 +274,10 @@ packages:
   /@sideway/pinpoint@2.0.0:
     resolution: {integrity: sha512-RNiOoTPkptFtSVzQevY/yWtZwf/RxyVnPy/OcA9HBM3MlGDnBEYL5B41H0MTn0Uec8Hi+2qUtTfG2WWZBmMejQ==}
     dev: true
+
+  /@sinclair/typebox@0.28.9:
+    resolution: {integrity: sha512-m98m37J9CBZ8XinStjpss2ZOW50KG45XB4cAva2NGoQHiGPxhfNL2BzUXYCs6ahXdK7/F1NIjOGh+MPP5dK8Rw==}
+    dev: false
 
   /@tokenizer/token@0.3.0:
     resolution: {integrity: sha512-OvjF+z51L3ov0OyAU0duzsYuvO01PH7x4t6DJx+guahgTnBHkhJdG7soQeTSFLWN3efnHyibZ4Z8l2EuWwJN3A==}

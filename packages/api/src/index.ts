@@ -1,3 +1,4 @@
+import { createSearch } from '@gitpod/docs-qa';
 import type { ErrorResponse } from './types';
 import { adapter } from '@nerujs/fastify';
 import fastify from 'fastify';
@@ -36,6 +37,10 @@ server.decorateReply('error', function (code: number, message: string) {
         error,
     } satisfies ErrorResponse;
 });
+
+const search = await createSearch();
+
+server.decorate('search', search);
 
 server.listen({ port: 4000 }, (error, address) => {
     console.log(error ? `Error: ${error}` : `Online: ${address}`);
