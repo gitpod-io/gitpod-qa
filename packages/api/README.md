@@ -10,6 +10,10 @@ interface ErrorResponse {
 }
 ```
 
+# Rate Limiting
+
+The rate limit will result in the usual `429` status code with the same response body as an error. There are also the `X-Ratelimit-Limit`, `X-Ratelimit-Remaining`, `X-Ratelimit-Reset` headers if you want to impliment more advanced handling of a rate limit error.
+
 # Endpoints
 
 ## POST `/v1/ask`
