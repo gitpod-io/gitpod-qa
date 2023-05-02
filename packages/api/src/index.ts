@@ -1,5 +1,6 @@
 import { createSearch } from '@gitpod/docs-qa';
 import type { ErrorResponse } from './types';
+import rateLimit from '@fastify/rate-limit';
 import { adapter } from '@nerujs/fastify';
 import fastify from 'fastify';
 import { neru } from 'neru';
@@ -13,10 +14,10 @@ const server = fastify({
     },
 });
 
-await neru({
-    routes: join(import.meta.url, './routes'),
-    adapter,
-    server,
+await server.register(rateLimit, {
+    timeWindow: 5000,
+    global: true,
+    max: 3,
 });
 
 const errorNames: Record<number, string> = {
@@ -41,6 +42,12 @@ server.decorateReply('error', function (code: number, message: string) {
 const search = await createSearch();
 
 server.decorate('search', search);
+
+await neru({
+    routes: join(import.meta.url, './routes'),
+    adapter,
+    server,
+});
 
 server.listen({ port: 4000 }, (error, address) => {
     console.log(error ? `Error: ${error}` : `Online: ${address}`);

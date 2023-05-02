@@ -6,6 +6,9 @@ importers:
 
   packages/api:
     dependencies:
+      '@fastify/rate-limit':
+        specifier: ^8.0.0
+        version: 8.0.0
       '@nerujs/fastify':
         specifier: ^1.0.1
         version: 1.0.1(fastify@4.16.3)(neru@1.0.1)
@@ -200,6 +203,14 @@ packages:
     resolution: {integrity: sha512-aZAXGYo6m22Fk1zZzEUKBvut/CIIQe/BapEORnxiD5Qr0kPHqqI69NtEMCme74h+at72sPhbkb4ZrLd1W3KRLA==}
     dependencies:
       fast-json-stringify: 5.7.0
+    dev: false
+
+  /@fastify/rate-limit@8.0.0:
+    resolution: {integrity: sha512-73pQFgpx6RMmY5nriYQW0AIATZpa/OAvWa5PQ9JHEqgjKMLNv9zLAphWIRh5914aN6sqtv8sLICr3Tp1NbXQIQ==}
+    dependencies:
+      fastify-plugin: 4.5.0
+      ms: 2.1.3
+      tiny-lru: 10.4.1
     dev: false
 
   /@fortaine/fetch-event-source@3.0.6:
@@ -842,6 +853,10 @@ packages:
     resolution: {integrity: sha512-cIusKBIt/R/oI6z/1nyfe2FvGKVTohVRfvkOhvx0nCEW+xf5NoCXjAHcWp93uOUBchzYcsvPlrapAdX1uW+YGg==}
     dev: false
 
+  /fastify-plugin@4.5.0:
+    resolution: {integrity: sha512-79ak0JxddO0utAXAQ5ccKhvs6vX2MGyHHMMsmZkBANrq3hXc1CHzvNPHOcvTsVMEPl5I+NT+RO4YKMGehOfSIg==}
+    dev: false
+
   /fastify@4.16.3:
     resolution: {integrity: sha512-W45bWZdjAcVxFUBubzkmiMp3VrIRpsqUP6D0NS2Qb1BjTSNNT1NxAubzM8tdMyC5mIBymtvPE3B+DYmItc1rlQ==}
     dependencies:
@@ -1206,7 +1221,6 @@ packages:
 
   /ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
-    dev: true
 
   /neru@1.0.1:
     resolution: {integrity: sha512-fiTCdJp4Q16MhI3KCnXx7x5EBB0uVEU6wcuAtkk3Q9P8Rnjtud6mvHrbAeewwDMIl2nbW612Nvl4dDaBi1HqCw==}
@@ -1557,6 +1571,11 @@ packages:
     resolution: {integrity: sha512-kaDqm1DET9pp3NXwR8382WHbnpXnRkN9xGN9dQt3B2+dmXiW8X1SOwmFOxAErEQ47ObhZ96J6yhZNXuyCOL7KA==}
     dependencies:
       real-require: 0.2.0
+    dev: false
+
+  /tiny-lru@10.4.1:
+    resolution: {integrity: sha512-buLIzw7ppqymuO3pt10jHk/6QMeZLbidihMQU+N6sogF6EnBzG0qtDWIHuhw1x3dyNgVL/KTGIZsTK81+yCzLg==}
+    engines: {node: '>=12'}
     dev: false
 
   /tiny-lru@11.0.1:
