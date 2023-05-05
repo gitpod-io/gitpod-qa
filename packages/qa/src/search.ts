@@ -49,14 +49,18 @@ export async function createSearch(): Promise<QASearcher> {
             query: question,
         });
 
-        const sources = result?.sourceDocuments?.map(
-            (s) => s?.metadata?.source,
-        );
+        const rawSources: any[] =
+            result?.sourceDocuments?.map((s: any) => s?.metadata?.source) ?? [];
 
         const answer = result?.text?.trim();
 
+        const sources: string[] = rawSources
+            .filter((source): source is string => typeof source == 'string')
+            // TODO remove the map next time the search index is rebuilt
+            .map((source) => source.replace(/\/index$/gm, ''));
+
         return {
-            sources: (sources ?? []).filter(Boolean),
+            sources,
             answer:
                 typeof answer == 'string' ? answer : 'Error getting response',
         };
