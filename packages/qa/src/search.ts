@@ -57,7 +57,8 @@ export async function createSearch(): Promise<QASearcher> {
         const sources: string[] = rawSources
             .filter((source): source is string => typeof source == 'string')
             // TODO remove the map next time the search index is rebuilt
-            .map((source) => source.replace(/\/index$/gm, ''));
+            .map((source) => source.replace(/\/index$/gm, ''))
+            .reduce<string[]>((a, x) => (a.includes(x) ? a : [...a, x]), []);
 
         return {
             sources,
