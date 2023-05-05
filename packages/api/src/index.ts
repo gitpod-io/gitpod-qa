@@ -1,3 +1,5 @@
+import 'dotenv/config';
+import { createWriteStream } from 'pino-logflare';
 import { createSearch } from '@gitpod/docs-qa';
 import type { ErrorResponse } from './types';
 import rateLimit from '@fastify/rate-limit';
@@ -6,11 +8,22 @@ import fastify from 'fastify';
 import { neru } from 'neru';
 import { join } from 'desm';
 
+const dev = process.env['NODE_ENV'] == 'development';
+
 const server = fastify({
     logger: {
-        transport: {
-            target: 'pino-pretty',
-        },
+        transport: dev
+            ? {
+                  target: 'pino-pretty',
+              }
+            : undefined,
+
+        stream: dev
+            ? undefined
+            : createWriteStream({
+                  apiKey: process.env.LOGFLARE_API_KEY!,
+                  sourceToken: process.env.LOGFLARE_SOURCE_TOKEN!,
+              }),
     },
 });
 

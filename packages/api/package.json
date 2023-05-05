@@ -5,13 +5,14 @@
 	"main": "src/index.ts",
 	"scripts": {
 		"start": "tsm .",
-		"dev": "nodemon -e js,ts --loader tsm ."
+		"dev": "NODE_ENV=development nodemon -e js,ts --loader tsm ."
 	},
 	"devDependencies": {
 		"@gitpod/docs-qa": "workspace:^",
 		"@types/node": "^18.16.1",
 		"dotenv": "^16.0.3",
 		"nodemon": "^2.0.22",
+		"pino-logflare": "^0.3.12",
 		"tsm": "^2.3.0",
 		"typescript": "^5.0.4"
 	},
