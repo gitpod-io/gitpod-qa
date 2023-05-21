@@ -1,5 +1,5 @@
-import type { QASearcher } from '@gitpod/docs-qa';
 import type { ErrorResponse } from './types';
+import type { QABox } from 'qabox';
 
 declare module 'fastify' {
     interface FastifyReply {
@@ -7,6 +7,6 @@ declare module 'fastify' {
     }
 
     interface FastifyInstance {
-        search: QASearcher;
+        qabox: QABox;
     }
 }

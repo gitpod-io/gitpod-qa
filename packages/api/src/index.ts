@@ -1,8 +1,8 @@
 import 'dotenv/config';
 import { createWriteStream } from 'pino-logflare';
-import { createSearch } from '@gitpod/docs-qa';
 import type { ErrorResponse } from './types';
 import rateLimit from '@fastify/rate-limit';
+import { getQABox } from '@gitpod/docs-qa';
 import { adapter } from '@nerujs/fastify';
 import fastify from 'fastify';
 import { neru } from 'neru';
@@ -52,9 +52,9 @@ server.decorateReply('error', function (code: number, message: string) {
     } satisfies ErrorResponse;
 });
 
-const search = await createSearch();
+const qabox = await getQABox();
 
-server.decorate('search', search);
+server.decorate('qabox', qabox);
 
 await neru({
     routes: join(import.meta.url, './routes'),

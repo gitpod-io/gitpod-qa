@@ -12,6 +12,7 @@
         "simple-git": "^3.17.0",
         "totalist": "^3.0.1",
         "tsm": "^2.3.0",
-        "typescript": "^5.0.3"
+        "typescript": "^5.0.3",
+        "qabox": "^0.1.1"
     }
 }

@@ -1,2 +1,1 @@
-export type { QASearchResult, QASearcher } from './search';
-export { createSearch } from './search';
+export { getQABox } from './search';

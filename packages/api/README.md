@@ -31,6 +31,6 @@ Response:
 ```ts
 interface Response {
     sources: string[];
-    answer: string;
+    answer: string | null;
 }
 ```

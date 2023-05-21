@@ -17,7 +17,7 @@ export const POST = route({
     async handler(request, reply) {
         const { question } = request.body as Data;
 
-        const result = await this.search(question);
+        const result = await this.qabox.ask(question);
 
         return result;
     },

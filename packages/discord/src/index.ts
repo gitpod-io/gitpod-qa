@@ -1,9 +1,7 @@
-import { createSearch } from '@gitpod/docs-qa';
 import { JellyCommands } from 'jellycommands';
 import { IntentsBitField } from 'discord.js';
+import { getQABox } from '@gitpod/docs-qa';
 import 'dotenv/config';
-
-const search = await createSearch();
 
 const client = new JellyCommands({
     buttons: 'src/buttons',
@@ -17,7 +15,7 @@ const client = new JellyCommands({
     },
 
     props: {
-        search,
+        qabox: await getQABox(),
     },
 
     dev: {

@@ -35,7 +35,7 @@ export default button({
 
         const answer = await generate_answer(
             limit_chars(question),
-            props.search,
+            props.qabox,
         );
 
         return interaction.followUp({
