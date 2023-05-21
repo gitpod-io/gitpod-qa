@@ -1,4 +1,3 @@
-// import { UnstructuredLoader } from 'langchain/document_loaders/fs/unstructured';
 import { OpenAIEmbeddings } from 'langchain/embeddings/openai';
 import { MarkdownTextSplitter } from 'langchain/text_splitter';
 import { HNSWLib } from 'langchain/vectorstores/hnswlib';
@@ -43,18 +42,6 @@ console.log('Getting documents');
 const documents: Document[] = [];
 
 for (const { path, url } of paths) {
-    // const loader = new UnstructuredLoader(path, {
-    //     // Switch to this if you are getting ratelimits, needs unstructured running locally
-    //     // https://js.langchain.com/docs/modules/indexes/document_loaders/examples/file_loaders/unstructured#setup
-    //     apiUrl: 'http://127.0.0.1:8000/general/v0/general',
-    // });
-
-    // const docs = await loader.loadAndSplit(new MarkdownTextSplitter());
-
-    // for (const doc of docs) {
-    //     doc.metadata.source = url;
-    // }
-
     const content = await readFile(path, 'utf-8');
     const splitter = new MarkdownTextSplitter();
 
