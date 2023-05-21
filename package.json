@@ -5,6 +5,7 @@
         "start:discord": "pnpm --filter discord-qa -r start",
         "start:api": "pnpm --filter api -r start",
         "dev:api": "pnpm --filter api -r dev",
-        "generate:discord-index": "python3 scripts/generate_discord_index.py > search-index/discord_theads_store.json"
+        "generate:discord-index": "python3 scripts/generate_discord_index.py > search-index/discord_theads_store.json",
+        "build:index": "pnpm --filter docs-qa -r build"
     }
 }

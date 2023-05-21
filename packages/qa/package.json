@@ -2,6 +2,9 @@
     "name": "@gitpod/docs-qa",
     "private": true,
     "main": "./src/index.ts",
+    "scripts": {
+        "build": "tsm src/build.ts"
+    },
     "devDependencies": {
         "@types/marked": "^5.0.0",
         "@types/node": "^20.2.1",
