@@ -2,6 +2,7 @@
     "name": "@gitpod/qa-monorepo",
     "private": true,
     "scripts": {
+        "start": "pnpm --filter discord-qa --filter api --parallel -r start",
         "start:discord": "pnpm --filter discord-qa -r start",
         "start:api": "pnpm --filter api -r start",
         "dev:api": "pnpm --filter api -r dev",

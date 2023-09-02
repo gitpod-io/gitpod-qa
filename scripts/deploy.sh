@@ -21,7 +21,7 @@ After=network.target
 
 [Service]
 ExecStartPre=sh -c 'git reset --hard && git pull --ff && pnpm install'
-ExecStart=pnpm start:discord
+ExecStart=pnpm start
 Restart=always
 WorkingDirectory=${app_dir}
 
