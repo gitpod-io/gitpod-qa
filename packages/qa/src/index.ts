@@ -6,7 +6,11 @@ import { QABox } from 'qabox';
 
 export async function getQABox() {
     const store = await HNSWLib.load(SEARCH_PATH, new OpenAIEmbeddings());
-    const qabox = new QABox(store, new OpenAI({ temperature: 0 }));
+
+    const qabox = new QABox(
+        store,
+        new OpenAI({ temperature: 0, modelName: 'gpt-4' }),
+    );
 
     return qabox;
 }
