@@ -22,17 +22,20 @@ console.log('Finding MD files');
 
 const paths: { path: string; url: string }[] = [];
 
-await totalist(repoPath, (relative, path) => {
-    if (!relative.endsWith('.md') || !relative.startsWith('src/routes')) return;
+await totalist(`${repoPath}/src/content`, (relative, path) => {
+    if (
+        !relative.endsWith('.md') ||
+        !['docs', 'guides'].includes(relative.slice(0, relative.indexOf('/')))
+    )
+        return;
 
-    const pathname = relative
-        .replace('src/routes', '')
+    let pathname = relative
         .slice(0, -3)
         .replace(/\/index$/gm, '/')
         .replace(/\/$/gm, '');
 
     paths.push({
-        url: `https://www.gitpod.io${pathname}`,
+        url: `https://www.gitpod.io/${pathname}`,
         path,
     });
 });
