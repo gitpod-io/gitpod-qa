@@ -6,14 +6,14 @@
         "build": "tsm src/build.ts"
     },
     "devDependencies": {
-        "@types/node": "^20.2.1",
+        "@types/node": "^20.5.8",
         "desm": "^1.3.0",
         "hnswlib-node": "^1.4.2",
-        "langchain": "^0.0.78",
+        "langchain": "^0.0.140",
         "qabox": "^0.1.1",
-        "simple-git": "^3.18.0",
+        "simple-git": "^3.19.1",
         "totalist": "^3.0.1",
         "tsm": "^2.3.0",
-        "typescript": "^5.0.4"
+        "typescript": "^5.2.2"
     }
 }

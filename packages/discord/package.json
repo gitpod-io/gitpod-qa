@@ -8,15 +8,15 @@
 	"devDependencies": {
 		"@gitpod/docs-qa": "workspace:^",
 		"@types/common-tags": "^1.8.1",
-		"@types/node": "^20.2.1",
+		"@types/node": "^20.5.8",
 		"common-tags": "^1.8.2",
-		"discord.js": "^14.11.0",
-		"dotenv": "^16.0.3",
+		"discord.js": "^14.13.0",
+		"dotenv": "^16.3.1",
 		"hnswlib-node": "^1.4.2",
 		"jellycommands": "1.0.0-next.43",
-		"langchain": "^0.0.78",
+		"langchain": "^0.0.140",
 		"qabox": "^0.1.1",
 		"tsm": "^2.3.0",
-		"typescript": "^5.0.4"
+		"typescript": "^5.2.2"
 	}
 }
