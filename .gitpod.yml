@@ -1,5 +1,5 @@
 tasks:
-  - command: npm install pnpm -g && pnpm install
+  - command: npm install pnpm -g && pnpm install --ignore-scripts
 
 github:
   prebuilds:
